@@ -56,10 +56,18 @@ cat output.txt
 Numerical investigation of deposition efficiency influencing factors in the friction surfacing process
 
 ### Link
-
+https://doi.org/10.4028/p-4tzjOZ
 
 ### Cite the work
-
+@article{Elbossily_3,
+  author    = {Elbossily, Ahmed and Kallien, Z. and Chafle, R. and Fraser, K. A. and Afrasiabi, M. and Klusemann, B.},
+  title     = {Numerical Investigation of Deposition Efficiency Influencing Factors in the Friction Surfacing Process},
+  journal   = {Key Engineering Materials},
+  volume    = {1050},
+  pages     = {1--7},
+  year      = {2026},
+  doi       = {10.4028/p-4tzjoz}
+}
 
 ### Funding
 
