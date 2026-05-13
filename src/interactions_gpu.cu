@@ -1167,9 +1167,11 @@ void interactions_rod_force_Songwon(particle_gpu *particles,  int *cells_start,
 	do_interactions_rod_force_Songwon<<<dG, dB>>>(*particles, global_time_dt, forces,
 		 										fr_heat_gen, hashes_tex,  cells_start_tex, 
 		 										 cells_end_tex, global_dz);
-	cleanup_texture_objects();
 
 	check_cuda_error("interactions interactions_rod_force_Songwon\n");
+
+	cleanup_texture_objects();
+
 }
 void interactions_monaghan(particle_gpu *particles, int *cells_start, int *cells_end, int num_cell)
 {
@@ -1190,9 +1192,11 @@ void interactions_monaghan(particle_gpu *particles, int *cells_start, int *cells
 										 global_dz, p->eps_pl, p->eps_pl_dot, global_time_dt,
 										  particles->T, p->vel, particles->fixed, particles->n);
 
-	cleanup_texture_objects();
 
 	check_cuda_error("interactions monaghan\n");
+
+	cleanup_texture_objects();
+
 }
 
 void interactions_heat_pse(particle_gpu *particles, int *cells_start, int *cells_end, int num_cell)
@@ -1211,6 +1215,9 @@ void interactions_heat_pse(particle_gpu *particles, int *cells_start, int *cells
 
 	do_interactions_heat<<<dG, dB>>>(pos_tex, h_tex, T_tex, tool_particle_tex, hashes_tex, cells_start_tex, cells_end_tex, rho_tex,
 									 p->T_t, p->N, thermals_workpiece.alpha, thermals_tool.alpha, global_dz);
+	
+	check_cuda_error("interactions after interactions_heat_pse\n");
+
 	cleanup_texture_objects();
 }
 
@@ -1230,6 +1237,8 @@ void interactions_heat_Brookshaw(particle_gpu *particles, int *cells_start, int 
 
 	do_interactions_heat_Brookshaw<<<dG, dB>>>(pos_tex, h_tex, T_tex, tool_particle_tex, hashes_tex, cells_start_tex, cells_end_tex, rho_tex,
 											   p->T_t, p->N, thermals_workpiece.alpha, thermals_tool.alpha, global_dz);
+
+	check_cuda_error("interactions after interactions_heat_Brookshaw\n");
 
 	cleanup_texture_objects();
 }
